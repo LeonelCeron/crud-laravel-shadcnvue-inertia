@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
+use Modules\Products\Models\Category;
 
 class CategoryController extends Controller
 {
@@ -14,7 +15,10 @@ class CategoryController extends Controller
      */
     public function index(): Response
     {
-        return Inertia::render('Products/Index');
+        $categories = Category::all();
+        return Inertia::render('Categories/Index', [
+            'categories' => $categories,
+        ]);
     }
 
     /**
